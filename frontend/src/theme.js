@@ -20,12 +20,12 @@ export const themeColors = (mode) => ({
             ? {
                 // palette values for light mode
                 primary: {
-                    main: blue[500],
+                    main: "#3c276d",
                     white: "#fff"
                 },
                 secondary: {
-                    main: lightBlue[800],
-                    midNightBlue: "#003366"
+                    main: "#3c276d",
+                    midNightBlue: "#3c276d"
                 },
             }
             : {

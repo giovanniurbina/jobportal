@@ -80,7 +80,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        JOB PORTAL
+                        A1 EMPLEOS
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -136,7 +136,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        JOB PORTAL
+                        A1 EMPLEOS
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {/* menu desktop */}
@@ -145,26 +145,26 @@ const Navbar = () => {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}>
                             <Link to="/" style={{ color: 'white', textDecoration: "none" }}>
-                                Home
+                                Inicio
                             </Link>
                         </Button>
                         <Button
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}>
                             <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
-                                Register
+                                Registrar
                             </Link>
                         </Button>
 
 
                     </Box>
-                    <IconButton sx={{ mr: 4 }} onClick={() => dispatch(toggleActionTheme())}>
+                    {/* <IconButton sx={{ mr: 4 }} onClick={() => dispatch(toggleActionTheme())}>
                         {palette.mode === "dark" ? (
                             <DarkMode sx={{ color: "#ffffff", fontSize: "25px" }} />
                         ) : (
                             <LightMode sx={{ color: "#ffffff", fontSize: "25px" }} />
                         )}
-                    </IconButton>
+                    </IconButton> */}
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
@@ -203,18 +203,18 @@ const Navbar = () => {
                                 <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/admin/dashboard">Admin Dashboard</Link></Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/user/dashboard">User Dashboard</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/user/dashboard">Tú Dashboard</Link></Typography>
                             </MenuItem>
 
                             {
                                 !userInfo ?
 
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/login">Log In</Link></Typography>
+                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/login">Iniciar sesión</Link></Typography>
                                     </MenuItem> :
 
                                     <MenuItem onClick={logOutUser}>
-                                        <Typography style={{ textDecoration: "none", color: palette.secondary.main }} textAlign="center">Log Out</Typography>
+                                        <Typography style={{ textDecoration: "none", color: palette.secondary.main }} textAlign="center">Cerrar sesión</Typography>
                                     </MenuItem>
                             }
 

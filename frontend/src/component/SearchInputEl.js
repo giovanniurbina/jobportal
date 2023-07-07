@@ -45,8 +45,8 @@ const SearchInputEl = () => {
                     fullWidth={true}
                     id="search"
                     name="search"
-                    label="search"
-                    placeholder='ex: developer, front end'
+                    label="Buscar"
+                    placeholder='ej: Asistente, Piloto, Contador'
                     value={values.search}
                     onChange={handleChange}
                     error={touched.search && Boolean(errors.search)}
@@ -54,7 +54,7 @@ const SearchInputEl = () => {
                 />
 
                 <Button color="primary" variant="contained" type="submit" disabled={isSubmitting}>
-                    Search
+                    Buscar
                 </Button>
             </Box>
             <Box component='span' sx={{ color: 'orange' }}>{touched.search && errors.search}</Box>
