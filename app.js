@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
+const mysql = require('mysql2');
+
+//const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
@@ -19,14 +21,28 @@ const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error");
 
 //database connection
-mongoose.connect(process.env.DATABASE, {
+/* mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
-})
-    .then(() => console.log("DB connected"))
-    .catch((err) => console.log(err));
+}) */
+const connection = mysql.createConnection({
+    host: '65.109.88.87', // Cambia esto por el host de tu base de datos MySQL
+    user: 'ascomgt_jonathan_urbina', // Cambia esto por tu nombre de usuario de MySQL
+    password: 'Realmadrid_100', // Cambia esto por tu contraseña de MySQL
+    database: 'ascomgt_test' // Cambia esto por el nombre de tu base de datos MySQL
+  });
+
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos:', err);
+    } else {
+      console.log('Conexión a la base de datos establecida');
+    }
+  })
+/*     .then(() => console.log("DB connected"))
+    .catch((err) => console.log(err)); */
 
 //MIDDLEWARE
 app.use(morgan('dev'));

@@ -1,12 +1,38 @@
-
-const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema;
+const mysql = require('mysql2');
+// const mongoose = require('mongoose');
+// const { ObjectId } = mongoose.Schema;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 
+const userSchema = `
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  firstName VARCHAR(32) NOT NULL,
+  lastName VARCHAR(32) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role INT DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+`;
 
-const jobsHistorySchema = new mongoose.Schema({
+const jobsHistorySchema = `
+CREATE TABLE jobsHistory (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(70),
+  description TEXT,
+  salary VARCHAR(255),
+  location VARCHAR(255),
+  interviewDate DATE,
+  applicationStatus ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
+  user INT NOT NULL,
+  FOREIGN KEY (user) REFERENCES users(id)
+);
+`;
+
+/* const jobsHistorySchema = new mongoose.Schema({
 
     title: {
         type: String,
@@ -82,7 +108,7 @@ const userSchema = new mongoose.Schema({
         default: 0
     }
 
-}, { timestamps: true })
+}, { timestamps: true }) */
 
 //encrypting password before saving
 userSchema.pre('save', async function (next) {
@@ -105,5 +131,5 @@ userSchema.methods.getJwtToken = function () {
 }
 
 
-
-module.exports = mongoose.model("User", userSchema);
+module.exports = userSchema;
+// module.exports = mongoose.model("User", userSchema);
